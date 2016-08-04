@@ -4,9 +4,16 @@
 
 int convert(char * numeral)
 {
+	int returnInteger = 1;
+
 	if(strcmp(numeral, "II") == 0)
 	{
-		return 2;
+		returnInteger = 2;
 	}
-	return 1;
+	else if(strcmp(numeral, "III") == 0)
+	{
+		returnInteger = 3;
+	}
+
+	return returnInteger;
 }
