@@ -2,9 +2,9 @@
 
 #include "converter.h"
 
-START_TEST(testName)
+START_TEST(numeral_one_can_be_converted)
 {
-    fail_unless(convert("I") == 1, "One conversion failed");
+    fail_unless(convert("I") == 1, "one conversion failed");
 }
 END_TEST
 
@@ -16,7 +16,7 @@ int main(void)
     int nf;
 
     suite_add_tcase(s1, tc1_1);
-    tcase_add_test(tc1_1, testName);
+    tcase_add_test(tc1_1, numeral_one_can_be_converted);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
