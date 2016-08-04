@@ -2,5 +2,5 @@
 
 int convert(char * numeral)
 {
-	return 0;
+	return 1;
 }
