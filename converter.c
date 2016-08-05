@@ -2,23 +2,24 @@
 
 #include "converter.h"
 
+char numerals[2] = {'I', 'V'};
+int integers[2] = {1, 5};
+
 int convert(char *numeral) {
-	int returnInteger = 1;
 
-	int v_index = index_of(numeral, 'V');
+	int previousValue = 0;
+	int returnInteger = 0;
+	for(int i = (strlen(numeral) - 1); i >= 0; i--) {
+		int numeralIndex = index_of(numerals, numeral[i]);
+		int integerIndexValue = integers[numeralIndex];
 
-	if(v_index != -1) {
-		returnInteger = 5;
-		int i_index = index_of(numeral, 'I');
-		if((i_index >= 0) && (i_index < v_index)) {
-			returnInteger = 4;
+		if(integerIndexValue < previousValue) {
+			returnInteger -= integerIndexValue;
+		} else {
+			returnInteger += integerIndexValue;
 		}
-	}
 
-	if(strcmp(numeral, "II") == 0) {
-		returnInteger = 2;
-	} else if(strcmp(numeral, "III") == 0) {
-		returnInteger = 3;
+		previousValue = integerIndexValue;
 	}
 
 	return returnInteger;

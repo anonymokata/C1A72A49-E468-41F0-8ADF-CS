@@ -40,7 +40,7 @@ END_TEST
 
 START_TEST(numeral_five_can_be_converted)
 {
-    fail_unless(convert("V") == 5, "five conversion failed. Actual: %i", convert("V"));
+    fail_unless(convert("V") == 5, "five conversion failed.");
 }
 END_TEST
 
