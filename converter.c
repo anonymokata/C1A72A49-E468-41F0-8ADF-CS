@@ -5,7 +5,7 @@
 char numerals[7] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 int integers[7] = {1, 5, 10, 50, 100, 500, 1000};
 
-int convert(const char *numeral) {
+int convert_to_integer(const char *numeral) {
 
 	int previousValue = 0;
 	int returnInteger = 0;
@@ -23,6 +23,10 @@ int convert(const char *numeral) {
 	}
 
 	return returnInteger;
+}
+
+char convert_to_numeral(const int integer) {
+	return 'I';
 }
 
 int index_of(const char *value, const char find) {

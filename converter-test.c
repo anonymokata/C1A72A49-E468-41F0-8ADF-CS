@@ -16,72 +16,78 @@ END_TEST
 
 START_TEST(numeral_one_can_be_converted)
 {
-    fail_unless(convert("I") == 1, "one conversion failed");
+    fail_unless(convert_to_integer("I") == 1);
 }
 END_TEST
 
 START_TEST(numeral_two_can_be_converted)
 {
-    fail_unless(convert("II") == 2, "two conversion failed");
+    fail_unless(convert_to_integer("II") == 2);
 }
 END_TEST
 
 START_TEST(numeral_three_can_be_converted)
 {
-    fail_unless(convert("III") == 3, "three conversion failed");
+    fail_unless(convert_to_integer("III") == 3);
 }
 END_TEST
 
 START_TEST(numeral_four_can_be_converted)
 {
-    fail_unless(convert("IV") == 4, "four conversion failed");
+    fail_unless(convert_to_integer("IV") == 4);
 }
 END_TEST
 
 START_TEST(numeral_five_can_be_converted)
 {
-    fail_unless(convert("V") == 5, "five conversion failed.");
+    fail_unless(convert_to_integer("V") == 5);
 }
 END_TEST
 
 START_TEST(numeral_ten_can_be_converted)
 {
-    fail_unless(convert("X") == 10, "ten conversion failed.");
+    fail_unless(convert_to_integer("X") == 10);
 }
 END_TEST
 
 START_TEST(numeral_one_hundred_can_be_converted)
 {
-    fail_unless(convert("C") == 100, "one hundred conversion failed.");
+    fail_unless(convert_to_integer("C") == 100);
 }
 END_TEST
 
 START_TEST(numeral_one_thousand_can_be_converted)
 {
-    fail_unless(convert("M") == 1000, "one thousand conversion failed.");
+    fail_unless(convert_to_integer("M") == 1000);
 }
 END_TEST
 
 START_TEST(numeral_fifty_can_be_converted)
 {
-    fail_unless(convert("L") == 50, "fifty conversion failed.");
+    fail_unless(convert_to_integer("L") == 50);
 }
 END_TEST
 
 START_TEST(numeral_five_hundred_can_be_converted)
 {
-    fail_unless(convert("D") == 500, "five hundred conversion failed.");
+    fail_unless(convert_to_integer("D") == 500);
 }
 END_TEST
 
 START_TEST(integration_test_edge_cases)
 {
-    fail_unless(convert("XV") == 15);
-    fail_unless(convert("ML") == 1050);
-    fail_unless(convert("XCIX") == 99);
-    fail_unless(convert("MMMCMXCIX") == 3999);
-    fail_unless(convert("MCCXXXIV") == 1234);
-    fail_unless(convert("XLII") == 42);
+    fail_unless(convert_to_integer("XV") == 15);
+    fail_unless(convert_to_integer("ML") == 1050);
+    fail_unless(convert_to_integer("XCIX") == 99);
+    fail_unless(convert_to_integer("MMMCMXCIX") == 3999);
+    fail_unless(convert_to_integer("MCCXXXIV") == 1234);
+    fail_unless(convert_to_integer("XLII") == 42);
+}
+END_TEST
+
+START_TEST(integer_one_can_be_converted)
+{
+    fail_unless(convert_to_numeral(1) == 'I');
 }
 END_TEST
 
@@ -105,6 +111,8 @@ int main(void)
     tcase_add_test(tc1_1, numeral_fifty_can_be_converted);
     tcase_add_test(tc1_1, numeral_five_hundred_can_be_converted);
     tcase_add_test(tc1_1, integration_test_edge_cases);
+
+    tcase_add_test(tc1_1, integer_one_can_be_converted);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
