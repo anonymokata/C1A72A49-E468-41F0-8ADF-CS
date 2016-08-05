@@ -5,7 +5,7 @@
 char numerals[7] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 int integers[7] = {1, 5, 10, 50, 100, 500, 1000};
 
-int convert(char *numeral) {
+int convert(const char *numeral) {
 
 	int previousValue = 0;
 	int returnInteger = 0;

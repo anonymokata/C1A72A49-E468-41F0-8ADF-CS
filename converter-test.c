@@ -74,6 +74,17 @@ START_TEST(numeral_five_hundred_can_be_converted)
 }
 END_TEST
 
+START_TEST(integration_test_edge_cases)
+{
+    fail_unless(convert("XV") == 15);
+    fail_unless(convert("ML") == 1050);
+    fail_unless(convert("XCIX") == 99);
+    fail_unless(convert("MMMCMXCIX") == 3999);
+    fail_unless(convert("MCCXXXIV") == 1234);
+    fail_unless(convert("XLII") == 42);
+}
+END_TEST
+
 int main(void)
 {
     Suite *s1 = suite_create("Core");
@@ -93,6 +104,7 @@ int main(void)
     tcase_add_test(tc1_1, numeral_one_thousand_can_be_converted);
     tcase_add_test(tc1_1, numeral_fifty_can_be_converted);
     tcase_add_test(tc1_1, numeral_five_hundred_can_be_converted);
+    tcase_add_test(tc1_1, integration_test_edge_cases);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
