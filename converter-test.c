@@ -44,6 +44,24 @@ START_TEST(numeral_five_can_be_converted)
 }
 END_TEST
 
+START_TEST(numeral_ten_can_be_converted)
+{
+    fail_unless(convert("X") == 10, "ten conversion failed.");
+}
+END_TEST
+
+START_TEST(numeral_one_hundred_can_be_converted)
+{
+    fail_unless(convert("C") == 100, "ten conversion failed.");
+}
+END_TEST
+
+START_TEST(numeral_one_thousand_can_be_converted)
+{
+    fail_unless(convert("M") == 1000, "ten conversion failed.");
+}
+END_TEST
+
 int main(void)
 {
     Suite *s1 = suite_create("Core");
@@ -58,6 +76,9 @@ int main(void)
     tcase_add_test(tc1_1, numeral_three_can_be_converted);
     tcase_add_test(tc1_1, numeral_four_can_be_converted);
     tcase_add_test(tc1_1, numeral_five_can_be_converted);
+    tcase_add_test(tc1_1, numeral_ten_can_be_converted);
+    tcase_add_test(tc1_1, numeral_one_hundred_can_be_converted);
+    tcase_add_test(tc1_1, numeral_one_thousand_can_be_converted);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
