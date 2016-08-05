@@ -52,13 +52,25 @@ END_TEST
 
 START_TEST(numeral_one_hundred_can_be_converted)
 {
-    fail_unless(convert("C") == 100, "ten conversion failed.");
+    fail_unless(convert("C") == 100, "one hundred conversion failed.");
 }
 END_TEST
 
 START_TEST(numeral_one_thousand_can_be_converted)
 {
-    fail_unless(convert("M") == 1000, "ten conversion failed.");
+    fail_unless(convert("M") == 1000, "one thousand conversion failed.");
+}
+END_TEST
+
+START_TEST(numeral_fifty_can_be_converted)
+{
+    fail_unless(convert("L") == 50, "fifty conversion failed.");
+}
+END_TEST
+
+START_TEST(numeral_five_hundred_can_be_converted)
+{
+    fail_unless(convert("D") == 500, "five hundred conversion failed.");
 }
 END_TEST
 
@@ -79,6 +91,8 @@ int main(void)
     tcase_add_test(tc1_1, numeral_ten_can_be_converted);
     tcase_add_test(tc1_1, numeral_one_hundred_can_be_converted);
     tcase_add_test(tc1_1, numeral_one_thousand_can_be_converted);
+    tcase_add_test(tc1_1, numeral_fifty_can_be_converted);
+    tcase_add_test(tc1_1, numeral_five_hundred_can_be_converted);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

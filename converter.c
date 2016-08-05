@@ -2,8 +2,8 @@
 
 #include "converter.h"
 
-char numerals[5] = {'I', 'V', 'X', 'C', 'M'};
-int integers[5] = {1, 5, 10, 100, 1000};
+char numerals[7] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+int integers[7] = {1, 5, 10, 50, 100, 500, 1000};
 
 int convert(char *numeral) {
 
