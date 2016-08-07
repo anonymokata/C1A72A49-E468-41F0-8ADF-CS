@@ -6,5 +6,6 @@ char *convert_to_numeral(int integer);
 int index_of(const char *value, const char find);
 
 char *add(const char *num_one, const char *num_two);
+char *subtract(const char *num_one, const char *num_two);
 
 #endif /* CONVERTER_H */
