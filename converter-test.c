@@ -89,9 +89,7 @@ END_TEST
 START_TEST(integer_one_can_be_converted)
 {
     char *actual_value = convert_to_numeral(1);
-
     ck_assert_str_eq(actual_value, "I");
-
     free(actual_value);
 }
 END_TEST
@@ -99,9 +97,7 @@ END_TEST
 START_TEST(integer_four_can_be_converted)
 {
     char *actual_value = convert_to_numeral(4);
-
     ck_assert_str_eq(actual_value, "IV");
-
     free(actual_value);
 }
 END_TEST
@@ -109,9 +105,7 @@ END_TEST
 START_TEST(integer_five_can_be_converted)
 {
     char *actual_value = convert_to_numeral(5);
-
     ck_assert_str_eq(actual_value, "V");
-
     free(actual_value);
 }
 END_TEST
@@ -119,9 +113,7 @@ END_TEST
 START_TEST(integer_nine_can_be_converted)
 {
     char *actual_value = convert_to_numeral(9);
-
     ck_assert_str_eq(actual_value, "IX");
-
     free(actual_value);
 }
 END_TEST
@@ -129,9 +121,7 @@ END_TEST
 START_TEST(integer_ten_can_be_converted)
 {
     char *actual_value = convert_to_numeral(10);
-
     ck_assert_str_eq(actual_value, "X");
-
     free(actual_value);
 }
 END_TEST
@@ -139,9 +129,7 @@ END_TEST
 START_TEST(integer_forty_can_be_converted)
 {
     char *actual_value = convert_to_numeral(40);
-
     ck_assert_str_eq(actual_value, "XL");
-
     free(actual_value);
 }
 END_TEST
@@ -149,9 +137,7 @@ END_TEST
 START_TEST(integer_fifty_can_be_converted)
 {
     char *actual_value = convert_to_numeral(50);
-
     ck_assert_str_eq(actual_value, "L");
-
     free(actual_value);
 }
 END_TEST
@@ -159,9 +145,7 @@ END_TEST
 START_TEST(integer_ninety_can_be_converted)
 {
     char *actual_value = convert_to_numeral(90);
-
     ck_assert_str_eq(actual_value, "XC");
-
     free(actual_value);
 }
 END_TEST
@@ -169,9 +153,7 @@ END_TEST
 START_TEST(integer_one_hundred_can_be_converted)
 {
     char *actual_value = convert_to_numeral(100);
-
     ck_assert_str_eq(actual_value, "C");
-
     free(actual_value);
 }
 END_TEST
@@ -179,9 +161,7 @@ END_TEST
 START_TEST(integer_four_hundred_can_be_converted)
 {
     char *actual_value = convert_to_numeral(400);
-
     ck_assert_str_eq(actual_value, "CD");
-
     free(actual_value);
 }
 END_TEST
@@ -189,9 +169,7 @@ END_TEST
 START_TEST(integer_five_hundred_can_be_converted)
 {
     char *actual_value = convert_to_numeral(500);
-
     ck_assert_str_eq(actual_value, "D");
-
     free(actual_value);
 }
 END_TEST
@@ -199,9 +177,7 @@ END_TEST
 START_TEST(integer_nine_hundred_can_be_converted)
 {
     char *actual_value = convert_to_numeral(900);
-
     ck_assert_str_eq(actual_value, "CM");
-
     free(actual_value);
 }
 END_TEST
@@ -209,9 +185,7 @@ END_TEST
 START_TEST(integer_one_thousand_can_be_converted)
 {
     char *actual_value = convert_to_numeral(1000);
-
     ck_assert_str_eq(actual_value, "M");
-
     free(actual_value);
 }
 END_TEST
@@ -233,6 +207,16 @@ START_TEST(integration_test_integer_conversion_edge_cases)
     char *c4 = convert_to_numeral(42);
     ck_assert_str_eq(c4, "XLII");
     free(c4);
+}
+END_TEST
+
+START_TEST(two_numerals_can_be_added)
+{
+    ck_assert_str_eq(add("I", "I"), "II");
+    ck_assert_str_eq(add("I", "III"), "IV");
+    ck_assert_str_eq(add("X", "X"), "XX");
+    ck_assert_str_eq(add("CI", "XLII"), "CXLIII");
+    ck_assert_str_eq(add("CL", "C"), "CCL");
 }
 END_TEST
 
@@ -271,6 +255,8 @@ int main(void)
     tcase_add_test(tc1_1, integer_nine_hundred_can_be_converted);
     tcase_add_test(tc1_1, integer_one_thousand_can_be_converted);
     tcase_add_test(tc1_1, integration_test_integer_conversion_edge_cases);
+
+    tcase_add_test(tc1_1, two_numerals_can_be_added);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

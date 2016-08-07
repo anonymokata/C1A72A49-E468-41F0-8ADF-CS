@@ -46,6 +46,16 @@ char *convert_to_numeral(int integer) {
 	return return_copy;
 }
 
+char *add(const char *num_one, const char *num_two) {
+	int integer_value_one = convert_to_integer(num_one);
+	int integer_value_two = convert_to_integer(num_two);
+	int total = integer_value_one + integer_value_two;
+
+	char *final_numeral = convert_to_numeral(total);
+
+	return final_numeral;
+}
+
 int index_of(const char *value, const char find) {
 	const char *first = strchr(value, find);
 	if(first) {
