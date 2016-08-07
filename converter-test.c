@@ -1,4 +1,5 @@
 #include <check.h>
+#include <stdlib.h>
 
 #include "converter.h"
 
@@ -87,7 +88,31 @@ END_TEST
 
 START_TEST(integer_one_can_be_converted)
 {
-    fail_unless(convert_to_numeral(1) == 'I');
+    char *actual_value = convert_to_numeral(1);
+
+    ck_assert_str_eq(actual_value, "I");
+
+    free(actual_value);
+}
+END_TEST
+
+START_TEST(integer_five_can_be_converted)
+{
+    char *actual_value = convert_to_numeral(5);
+
+    ck_assert_str_eq(actual_value, "V");
+
+    free(actual_value);
+}
+END_TEST
+
+START_TEST(integer_ten_can_be_converted)
+{
+    char *actual_value = convert_to_numeral(10);
+
+    ck_assert_str_eq(actual_value, "X");
+
+    free(actual_value);
 }
 END_TEST
 
@@ -113,6 +138,7 @@ int main(void)
     tcase_add_test(tc1_1, integration_test_edge_cases);
 
     tcase_add_test(tc1_1, integer_one_can_be_converted);
+    tcase_add_test(tc1_1, integer_five_can_be_converted);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
