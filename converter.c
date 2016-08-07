@@ -7,8 +7,8 @@
 char numerals[7] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 int integers[7] = {1, 5, 10, 50, 100, 500, 1000};
 
-int to_roman_integers[7] = {1000, 500, 100, 50, 10 ,5, 1};
-char to_roman_characters[7] = {'M', 'D', 'C', 'L', 'X', 'V', 'I'};
+int to_roman_integers[8] = {1000, 500, 100, 50, 10 ,5, 4, 1};
+char *to_roman_characters[9] = {"M", "D", "C", "L", "X", "V", "IV", "I"};
 
 int convert_to_integer(const char *numeral) {
 
@@ -36,7 +36,7 @@ char *convert_to_numeral(int integer) {
 	for(int i = 0; i < (sizeof(to_roman_integers)/sizeof(to_roman_integers[0])); i++) {
 	 	while (to_roman_integers[i] <= integer) {
 	     	integer -= to_roman_integers[i];
-	    	snprintf(return_buffer, sizeof return_buffer, "%s%c", return_buffer, to_roman_characters[i]);
+	    	snprintf(return_buffer, sizeof return_buffer, "%s%s", return_buffer, to_roman_characters[i]);
 	    }
 	}
 
