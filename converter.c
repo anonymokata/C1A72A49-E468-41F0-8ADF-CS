@@ -7,6 +7,9 @@
 char numerals[7] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 int integers[7] = {1, 5, 10, 50, 100, 500, 1000};
 
+int to_roman_integers[2] = {5, 1};
+char to_roman_characters[2] = {'V', 'I'};
+
 int convert_to_integer(const char *numeral) {
 
 	int previousValue = 0;
@@ -30,16 +33,11 @@ int convert_to_integer(const char *numeral) {
 char *convert_to_numeral(int integer) {
 	char *return_buffer = malloc(sizeof(char));
 
-	while(integer)
-	{
-		int current_int = integer % 10;
-
-		if(integer == 1) {
-			snprintf(return_buffer, sizeof return_buffer, "%s%s", return_buffer, "I");
-		} else if(integer == 5) {
-			snprintf(return_buffer, sizeof return_buffer, "%s%s", return_buffer, "V");
-		}
-		integer /= 10;
+	for(int i = 0; i < (sizeof(to_roman_integers)/sizeof(to_roman_integers[0])); i++) {
+	 	while (to_roman_integers[i] <= integer) {
+	     	integer -= to_roman_integers[i];
+	    	snprintf(return_buffer, sizeof return_buffer, "%s%c", return_buffer, to_roman_characters[i]);
+	    }
 	}
 
 	char *return_copy = malloc(sizeof(char));
