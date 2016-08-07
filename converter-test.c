@@ -156,6 +156,27 @@ START_TEST(integer_one_thousand_can_be_converted)
 }
 END_TEST
 
+START_TEST(integration_test_integer_conversion_edge_cases)
+{
+    char *c1 = convert_to_numeral(3999);
+    ck_assert_str_eq(c1, "MMMCMXCIX");
+    free(c1);
+
+    char *c2 = convert_to_numeral(1234);
+    ck_assert_str_eq(c2, "MCCXXXIV");
+    free(c2);
+
+
+    char *c3 = convert_to_numeral(99);
+    ck_assert_str_eq(c3, "XCIX");
+    free(c3);
+
+    char *c4 = convert_to_numeral(42);
+    ck_assert_str_eq(c4, "XLII");
+    free(c4);
+}
+END_TEST
+
 int main(void)
 {
     Suite *s1 = suite_create("Core");
@@ -184,6 +205,7 @@ int main(void)
     tcase_add_test(tc1_1, integer_one_hundred_can_be_converted);
     tcase_add_test(tc1_1, integer_five_hundred_can_be_converted);
     tcase_add_test(tc1_1, integer_one_thousand_can_be_converted);
+    tcase_add_test(tc1_1, integration_test_integer_conversion_edge_cases);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
