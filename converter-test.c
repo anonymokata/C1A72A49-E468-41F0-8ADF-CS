@@ -136,6 +136,16 @@ START_TEST(integer_ten_can_be_converted)
 }
 END_TEST
 
+START_TEST(integer_forty_can_be_converted)
+{
+    char *actual_value = convert_to_numeral(40);
+
+    ck_assert_str_eq(actual_value, "XL");
+
+    free(actual_value);
+}
+END_TEST
+
 START_TEST(integer_fifty_can_be_converted)
 {
     char *actual_value = convert_to_numeral(50);
@@ -216,7 +226,6 @@ START_TEST(integration_test_integer_conversion_edge_cases)
     ck_assert_str_eq(c2, "MCCXXXIV");
     free(c2);
 
-
     char *c3 = convert_to_numeral(99);
     ck_assert_str_eq(c3, "XCIX");
     free(c3);
@@ -253,6 +262,7 @@ int main(void)
     tcase_add_test(tc1_1, integer_five_can_be_converted);
     tcase_add_test(tc1_1, integer_nine_can_be_converted);
     tcase_add_test(tc1_1, integer_ten_can_be_converted);
+    tcase_add_test(tc1_1, integer_forty_can_be_converted);
     tcase_add_test(tc1_1, integer_fifty_can_be_converted);
     tcase_add_test(tc1_1, integer_ninety_can_be_converted);
     tcase_add_test(tc1_1, integer_one_hundred_can_be_converted);
@@ -260,7 +270,7 @@ int main(void)
     tcase_add_test(tc1_1, integer_five_hundred_can_be_converted);
     tcase_add_test(tc1_1, integer_nine_hundred_can_be_converted);
     tcase_add_test(tc1_1, integer_one_thousand_can_be_converted);
-    // tcase_add_test(tc1_1, integration_test_integer_conversion_edge_cases);
+    tcase_add_test(tc1_1, integration_test_integer_conversion_edge_cases);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

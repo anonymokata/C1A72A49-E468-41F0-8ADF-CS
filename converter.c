@@ -7,8 +7,8 @@
 char numerals[7] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 int integers[7] = {1, 5, 10, 50, 100, 500, 1000};
 
-int to_roman_integers[12] = {1000, 900, 500, 400, 100, 90, 50, 10, 9, 5, 4, 1};
-char *to_roman_characters[12] = {"M", "CM", "D", "CD", "C", "XC", "L", "X", "IX", "V", "IV", "I"};
+int to_roman_integers[13] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+char *to_roman_characters[13] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
 int convert_to_integer(const char *numeral) {
 
@@ -31,16 +31,15 @@ int convert_to_integer(const char *numeral) {
 }
 
 char *convert_to_numeral(int integer) {
-	char *return_buffer = malloc(sizeof(char));
+	char *return_buffer = calloc(16, sizeof(char));
 
 	for(int i = 0; i < (sizeof(to_roman_integers)/sizeof(to_roman_integers[0])); i++) {
 	 	while (to_roman_integers[i] <= integer) {
 	     	integer -= to_roman_integers[i];
-	    	snprintf(return_buffer, sizeof return_buffer, "%s%s", return_buffer, to_roman_characters[i]);
+	     	strcat(return_buffer, to_roman_characters[i]);
 	    }
 	}
-
-	char *return_copy = malloc(sizeof(char));
+	char *return_copy = calloc(16, sizeof(return_buffer));
 	strcpy(return_copy, return_buffer);
 	free(return_buffer);
 
