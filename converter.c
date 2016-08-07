@@ -7,8 +7,8 @@
 char numerals[7] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 int integers[7] = {1, 5, 10, 50, 100, 500, 1000};
 
-int to_roman_integers[8] = {1000, 500, 100, 50, 10 ,5, 4, 1};
-char *to_roman_characters[9] = {"M", "D", "C", "L", "X", "V", "IV", "I"};
+int to_roman_integers[12] = {1000, 900, 500, 400, 100, 90, 50, 10, 9, 5, 4, 1};
+char *to_roman_characters[12] = {"M", "CM", "D", "CD", "C", "XC", "L", "X", "IX", "V", "IV", "I"};
 
 int convert_to_integer(const char *numeral) {
 
