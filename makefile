@@ -2,12 +2,12 @@ CC=gcc
 COMPILER_FLAGS=-std=c99
 LDFLAGS=$(shell pkg-config --cflags --libs check)
 
-SOURCES=converter.c
-TESTS=converter-test.c
+SOURCES=roman_math.c
+TESTS=roman_math_test.c
 
-TEST_OBJECT=converter-test.o
+TEST_OBJECT=roman_math_test.o
 
-build: converter-test.c converter.c
+build: roman_math_test.c roman_math.c
 	$(CC) $(COMPILER_FLAGS) -o $(TEST_OBJECT) $(SOURCES) $(TESTS) $(LDFLAGS)
 
 test:
