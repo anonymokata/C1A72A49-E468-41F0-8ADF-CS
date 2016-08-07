@@ -116,6 +116,36 @@ START_TEST(integer_ten_can_be_converted)
 }
 END_TEST
 
+START_TEST(integer_fifty_can_be_converted)
+{
+    char *actual_value = convert_to_numeral(50);
+
+    ck_assert_str_eq(actual_value, "L");
+
+    free(actual_value);
+}
+END_TEST
+
+START_TEST(integer_one_hundred_can_be_converted)
+{
+    char *actual_value = convert_to_numeral(100);
+
+    ck_assert_str_eq(actual_value, "C");
+
+    free(actual_value);
+}
+END_TEST
+
+START_TEST(integer_five_hundred_can_be_converted)
+{
+    char *actual_value = convert_to_numeral(500);
+
+    ck_assert_str_eq(actual_value, "D");
+
+    free(actual_value);
+}
+END_TEST
+
 int main(void)
 {
     Suite *s1 = suite_create("Core");
@@ -139,6 +169,11 @@ int main(void)
 
     tcase_add_test(tc1_1, integer_one_can_be_converted);
     tcase_add_test(tc1_1, integer_five_can_be_converted);
+    tcase_add_test(tc1_1, integer_ten_can_be_converted);
+    tcase_add_test(tc1_1, integer_fifty_can_be_converted);
+    tcase_add_test(tc1_1, integer_one_hundred_can_be_converted);
+    tcase_add_test(tc1_1, integer_five_hundred_can_be_converted);
+
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
